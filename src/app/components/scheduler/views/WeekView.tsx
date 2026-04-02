@@ -322,7 +322,7 @@ export const WeekView: React.FC<WeekViewProps> = ({
             }px`,
           }}
         >
-          <span className="text-[10px] font-bold text-gray-5000 bg-primary px-1.5 py-0.5 rounded-md shadow-md -translate-y-1/2 backdrop-blur-none">
+          <span className="text-[10px] font-bold text-gray-5000 bg-primary px-1.5 py-0.5 rounded-md shadow-md translate-y-17 backdrop-blur-none">
             {format(zonedNow, "h:mm")}
           </span>
         </div>
