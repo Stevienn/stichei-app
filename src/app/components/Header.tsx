@@ -6,12 +6,15 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuthStore } from "@/store/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "@/config/firebase";
+import LogoutIcon from "@mui/icons-material/Logout";
+import Image from "next/image";
 
 type IHeaderProps = {
   isLogin: () => void;
+  isEditProfileModal: () => void;
 };
 
-const Header = ({ isLogin }: IHeaderProps) => {
+const Header = ({ isLogin, isEditProfileModal }: IHeaderProps) => {
   const pathname = usePathname();
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
@@ -83,16 +86,27 @@ const Header = ({ isLogin }: IHeaderProps) => {
           </div>
           <div className="font-reemkufi flex items-center">
             {user ? (
-              <div className="flex gap-[30px] justify-center items-center">
-                <p className="text-[25px] font-lalezar mt-[5px]">
-                  Hello, {user.fullname} !
-                </p>
-                <button
-                  className="bg-gradient-to-r from-red-800 to-red-500 text-[17px] rounded-[20px] px-[30px] py-[7px] text-white cursor-pointer hover:scale-110 hover:shadow-2xl transition-all duration-300 ease-in-out"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
+              <div className="flex gap-[20px] justify-center items-center">
+                <div className="flex gap-[10px]">
+                  <p className="text-[25px] font-lalezar mt-[5px]">Hello,</p>
+                  <p className="text-[25px] font-lalezar mt-[5px] text-blue-800">
+                    {user.fullname} !
+                  </p>
+                </div>
+                <Image
+                  src={"/profilePicture/ppgukguk.png"}
+                  alt="pp"
+                  width={50}
+                  height={40}
+                  className="border rounded-[200px] cursor-pointer hover:scale-110"
+                  onClick={isEditProfileModal}
+                />
+                <div onClick={handleLogout}>
+                  <LogoutIcon
+                    className="cursor-pointer hover:scale-110 mb-[8px]"
+                    fontSize="large"
+                  />
+                </div>
               </div>
             ) : (
               <button

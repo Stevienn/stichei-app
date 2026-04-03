@@ -14,9 +14,11 @@ import {
 } from "firebase/firestore";
 import { auth, db } from "@/config/firebase";
 import { useAuthStore } from "@/store/auth";
+import EditProfileModal from "./modals/EditProfileModal";
 
 export default function Home() {
   const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -58,7 +60,14 @@ export default function Home() {
         <LoginModal isLogin={() => setOpenLoginModal(false)} />
       )}
 
-      <Header isLogin={() => setOpenLoginModal(true)} />
+      {openEditProfileModal && (
+        <EditProfileModal isEdit={() => setOpenEditProfileModal(false)} />
+      )}
+
+      <Header
+        isLogin={() => setOpenLoginModal(true)}
+        isEditProfileModal={() => setOpenEditProfileModal(true)}
+      />
       <ScheduleComponent />
     </>
   );
