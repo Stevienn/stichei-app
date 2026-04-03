@@ -222,7 +222,7 @@ const ScheduleComponent = () => {
             An upcoming schedule for our date/meeting
           </p>
         </div>
-        <div className="pb-[80px]">
+        <div className="pb-[50px]">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 750 }} aria-label="customized table">
               <TableHead>
