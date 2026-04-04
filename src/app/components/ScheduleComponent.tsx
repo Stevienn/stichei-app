@@ -136,7 +136,7 @@ const ScheduleComponent = () => {
       end: updatedEvent.end,
       calendarId: updatedEvent.calendarId,
       color: updatedEvent.color,
-      isImportant: updatedEvent.isImportant
+      isImportant: updatedEvent.isImportant ?? false,
     });
 
     setEvents((prev) =>
