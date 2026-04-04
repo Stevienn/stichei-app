@@ -5,6 +5,7 @@ import { CalendarEvent } from "./scheduler/types";
 import { format } from "date-fns";
 import { ChevronDown, Check, Clock, CalendarDays, Trash2 } from "lucide-react";
 import { cn } from "./scheduler/utils";
+import { Checkbox } from "@mui/material";
 
 interface EventModalProps {
   isOpen: boolean;
@@ -44,6 +45,7 @@ export const EventModal: React.FC<EventModalProps> = ({
     allDay: false,
     color: "#3b82f6",
     calendarId: calendars?.[0]?.id,
+    isImportant: false,
   });
 
   const [isCalendarDropdownOpen, setIsCalendarDropdownOpen] = useState(false);
@@ -140,6 +142,19 @@ export const EventModal: React.FC<EventModalProps> = ({
             placeholder="Add title"
             autoFocus
           />
+        </div>
+
+        <div className="flex items-center ml-[-8px] ">
+          <Checkbox
+            checked={!!formData.isImportant}
+            onChange={(e) =>
+              setFormData({ ...formData, isImportant: e.target.checked })
+            }
+          />
+          <p className="text-[15px] font-semibold mr-[6px]">
+            Mark this event as
+          </p>
+          <p className="text-red-600 font-semibold"> important ! </p>
         </div>
 
         {/* Date/Time Card */}

@@ -11,6 +11,7 @@ export interface CalendarEvent {
   color?: string;
   allDay?: boolean;
   calendarId?: string;
+  isImportant: boolean;
   // eslint-disable-next-line
   [key: string]: any;
 }
