@@ -12,6 +12,7 @@ export interface CalendarEvent {
   allDay?: boolean;
   calendarId?: string;
   isImportant: boolean;
+  reminder: boolean;
   // eslint-disable-next-line
   [key: string]: any;
 }

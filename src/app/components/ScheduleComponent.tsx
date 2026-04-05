@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 import { db } from "@/config/firebase";
 import { auth } from "@/config/firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, updateEmail } from "firebase/auth";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -106,6 +106,7 @@ const ScheduleComponent = () => {
         calendars.find((c) => c.id === newEvent.calendarId)?.color || "#ff66e5",
       createdAt: new Date(),
       isImportant: newEvent.isImportant ?? false,
+      reminder: false,
     };
     const docRef = await addDoc(collection(db, "events"), {
       ...event,
@@ -137,6 +138,7 @@ const ScheduleComponent = () => {
       calendarId: updatedEvent.calendarId,
       color: updatedEvent.color,
       isImportant: updatedEvent.isImportant ?? false,
+      reminder: updatedEvent.reminder,
     });
 
     setEvents((prev) =>
