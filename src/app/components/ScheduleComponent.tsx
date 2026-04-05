@@ -106,7 +106,7 @@ const ScheduleComponent = () => {
         calendars.find((c) => c.id === newEvent.calendarId)?.color || "#ff66e5",
       createdAt: new Date(),
       isImportant: newEvent.isImportant ?? false,
-      reminder: false,
+      reminderSent: false,
     };
     const docRef = await addDoc(collection(db, "events"), {
       ...event,
@@ -138,7 +138,7 @@ const ScheduleComponent = () => {
       calendarId: updatedEvent.calendarId,
       color: updatedEvent.color,
       isImportant: updatedEvent.isImportant ?? false,
-      reminder: updatedEvent.reminder,
+      reminderSent: updatedEvent.reminder,
     });
 
     setEvents((prev) =>
