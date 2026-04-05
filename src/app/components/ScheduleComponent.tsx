@@ -138,7 +138,7 @@ const ScheduleComponent = () => {
       calendarId: updatedEvent.calendarId,
       color: updatedEvent.color,
       isImportant: updatedEvent.isImportant ?? false,
-      reminderSent: updatedEvent.reminder,
+      reminderSent: updatedEvent.reminderSent,
     });
 
     setEvents((prev) =>
